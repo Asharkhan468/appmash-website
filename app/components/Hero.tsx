@@ -1,9 +1,6 @@
-
-
 "use client";
 
-import { useState, useEffect } from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faPlayCircle } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,57 +9,13 @@ import facebook from "@/public/facebook Icon.png";
 import twitter from "@/public/Twitter Icon.png";
 import youtube from "@/public/Youtube Icon.png";
 import hero1 from "@/public/hero1.png";
-import hero2 from "@/public/hero2.png";
-import hero3 from "@/public/hero3.png";
-// import GetStartedForm from "./GetQuoteForm";
+import GetStartedForm from "./GetQuoteForm";
 
-interface Slide {
-  title: string;
-  subtitle: string;
-  description: string;
-  image: StaticImageData;
-}
-
-const slides: Slide[] = [
-  {
-    title: "CUSTOM SOFTWARE",
-    subtitle: "SOLUTION",
-    description: "We develop tailored solutions that scale with your business growth.",
-    image: hero1,
-  },
-  {
-    title: "BRAND IDENTITY",
-    subtitle: "INNOVATION",
-    description: "Cross-platform mobile apps that perform smoothly and look great.",
-    image: hero3,
-  },
-  {
-    title: "AI-DRIVEN MARKETING",
-    subtitle: "EXPERIENCE",
-    description: "From design to deployment, we deliver modern, scalable apps.",
-    image: hero2,
-  },
-  {
-    title: "IMMERSIVE TECH &",
-    subtitle: "INTERACTIVE DESIGN",
-    description: "Cross-platform mobile apps that perform smoothly and look great.",
-    image: hero3,
-  },
-];
-
-export default function HeroCarousel() {
-  const [index, setIndex] = useState(0);
-  const [showForm, setShowForm] = useState(false);
-
-  // Autoplay
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const { title, subtitle, description, image } = slides[index];
+export default function HeroCarouselStatic() {
+  const title = "CUSTOM SOFTWARE";
+  const subtitle = "SOLUTION";
+  const description =
+    "We develop tailored solutions that scale with your business growth.";
 
   return (
     <section className="relative w-full min-h-screen flex items-center overflow-hidden pt-4 sm:pt-6 pb-6 sm:pb-8">
@@ -72,7 +25,6 @@ export default function HeroCarousel() {
       {/* Main Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pb-6 sm:pb-8">
         <div className="flex flex-col md:grid md:grid-cols-2 min-h-[600px] gap-4 sm:gap-6 md:gap-8 items-center">
-          
           {/* Left Content */}
           <div className="text-center md:text-left space-y-2 sm:space-y-3 md:space-y-4 order-2 md:order-1 transition-all duration-700 ease-in-out">
             <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-gray-300">
@@ -89,10 +41,7 @@ export default function HeroCarousel() {
 
             {/* Buttons */}
             <div className="flex flex-wrap justify-center md:justify-start items-center gap-2 sm:gap-3 pt-1 sm:pt-2">
-              <button
-                onClick={() => setShowForm(true)}
-                className="flex items-center gap-1 sm:gap-2 bg-primary2 text-white font-semibold text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-md transition hover:bg-primary2/90"
-              >
+              <button className="flex items-center gap-1 sm:gap-2 bg-primary2 text-white font-semibold text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-md transition hover:bg-primary2/90">
                 Get Started
                 <FontAwesomeIcon
                   icon={faArrowRight}
@@ -113,7 +62,7 @@ export default function HeroCarousel() {
           <div className="relative flex justify-center items-center order-1 md:order-2 w-full">
             <div className="relative aspect-[4/5] w-full max-w-[440px] min-h-[550px]">
               <Image
-                src={image}
+                src={hero1}
                 alt={`${title} ${subtitle}`}
                 fill
                 sizes="(max-width: 768px) 100vw, 440px"
@@ -140,44 +89,15 @@ export default function HeroCarousel() {
         </div>
       </div>
 
-      {/* Dot Indicators */}
+      {/* Dot Indicators (Static - only one active) */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 py-2 sm:py-4">
         <div className="flex justify-center gap-1.5 sm:gap-2">
-          {slides.map((_, slideIndex) => (
-            <button
-              key={slideIndex}
-              onClick={() => setIndex(slideIndex)}
-              className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${
-                index === slideIndex
-                  ? "bg-primary2 w-3 sm:w-4"
-                  : "bg-white/50 hover:bg-white/70"
-              }`}
-              aria-label={`Go to slide ${slideIndex + 1}`}
-            />
-          ))}
+          <button className="bg-primary2 w-3 sm:w-4 h-3 sm:h-4 rounded-full" />
+          <button className="bg-white/50 w-2 h-2 rounded-full" />
+          <button className="bg-white/50 w-2 h-2 rounded-full" />
+          <button className="bg-white/50 w-2 h-2 rounded-full" />
         </div>
       </div>
-
-      {/* Form Modal */}
-      {showForm && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-[9999] p-4">
-          <div
-            className="relative w-full max-w-2xl bg-secondary1 rounded-xl shadow-2xl overflow-y-auto"
-            style={{ maxHeight: "95vh" }}
-          >
-            <button
-              onClick={() => setShowForm(false)}
-              className="absolute top-4 right-4 z-10 cursor-pointer text-primary1 hover:text-primary2 text-6xl font-bold transition-colors duration-200 focus:outline-none"
-              aria-label="Close form"
-            >
-              &times;
-            </button>
-            {/* <div className="p-6 md:p-8 w-full">
-              <GetStartedForm />
-            </div> */}
-          </div>
-        </div>
-      )}
     </section>
   );
 }
