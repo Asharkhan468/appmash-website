@@ -101,7 +101,7 @@ export default function HeroCarousel() {
 
           {/* Right Content (Image) */}
           <div className="relative flex justify-center items-center order-1 md:order-2 w-full">
-            <div className="relative w-[440px] h-[550px] min-w-[300px] flex justify-center items-center">
+            {/* <div className="relative w-[440px] h-[550px] min-w-[300px] flex justify-center items-center">
               <Image
                 src={image}
                 alt={`${title} ${subtitle}`}
@@ -110,10 +110,10 @@ export default function HeroCarousel() {
                 priority
                 className="object-contain rounded-md"
               />
-            </div>
+            </div> */}
 
             {/* Social Icons */}
-            <div className="hidden md:flex absolute right-[-40px] lg:right-[-60px] top-1/2 -translate-y-1/2 flex-col gap-4 z-20">
+            {/* <div className="hidden md:flex absolute right-[-40px] lg:right-[-60px] top-1/2 -translate-y-1/2 flex-col gap-4 z-20">
               {[pintrest, facebook, twitter, youtube].map((icon, i) => (
                 <Image
                   key={i}
@@ -124,7 +124,7 @@ export default function HeroCarousel() {
                   className="hover:scale-110 transition-transform"
                 />
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
