@@ -2,8 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Image, { StaticImageData } from "next/image";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faArrowRight, faPlayCircle } from "@fortawesome/free-solid-svg-icons";
 
 import pintrest from "@/public/Pintrest Icon.png";
 import facebook from "@/public/facebook Icon.png";
@@ -12,7 +10,6 @@ import youtube from "@/public/Youtube Icon.png";
 import hero1 from "@/public/hero1.png";
 import hero2 from "@/public/hero2.png";
 import hero3 from "@/public/hero3.png";
-// import GetStartedForm from "./GetQuoteForm";
 
 interface Slide {
   title: string;
@@ -87,13 +84,8 @@ export default function HeroCarousel() {
                 className="flex items-center gap-2 bg-primary2 text-white font-semibold px-4 py-2 rounded-md hover:bg-primary2/90"
               >
                 Get Started
-                {/* <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" /> */}
               </button>
               <button className="group flex items-center gap-2 border border-white hover:bg-white hover:text-black text-white font-semibold px-4 py-2 rounded-md">
-                {/* <FontAwesomeIcon
-                  icon={faPlayCircle}
-                  className="w-4 h-4 text-white group-hover:text-black"
-                /> */}
                 Watch Video
               </button>
             </div>
@@ -101,10 +93,7 @@ export default function HeroCarousel() {
 
           {/* Right Content (Image) */}
           <div className="relative flex justify-center items-center order-1 md:order-2 w-full">
-
-              <span className="text-white">Image Here</span>
-
-            {/* <div className="relative w-[440px] h-[550px] min-w-[300px] flex justify-center items-center">
+            <div className="relative w-[440px] h-[550px] min-w-[300px] flex justify-center items-center">
               <Image
                 src={image}
                 alt={`${title} ${subtitle}`}
@@ -113,7 +102,7 @@ export default function HeroCarousel() {
                 priority
                 className="object-contain rounded-md"
               />
-            </div> */}
+            </div>
 
             {/* Social Icons */}
             <div className="hidden md:flex absolute right-[-40px] lg:right-[-60px] top-1/2 -translate-y-1/2 flex-col gap-4 z-20">
@@ -149,25 +138,10 @@ export default function HeroCarousel() {
         </div>
       </div>
 
-      {/* Modal */}
-      {/* {showForm && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-[9999] p-4">
-          <div
-            className="relative w-full max-w-2xl bg-secondary1 rounded-xl shadow-2xl overflow-y-auto"
-            style={{ maxHeight: "95vh" }}
-          >
-            <button
-              onClick={() => setShowForm(false)}
-              className="absolute top-4 right-4 text-primary1 hover:text-primary2 text-6xl font-bold"
-            >
-              &times;
-            </button>
-            <div className="p-8 w-full">
-              <GetStartedForm />
-            </div>
-          </div>
-        </div>
-      )} */}
+      {/* Hidden block to prevent purge */}
+      <div className="hidden">
+        md:grid md:grid-cols-2 order-1 order-2 text-center md:text-left justify-center md:justify-start space-y-4 gap-8 flex items-center
+      </div>
     </section>
   );
 }
